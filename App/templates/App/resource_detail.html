@@ -1,6 +1,15 @@
-<h2>Resource Details</h2>
+{% extends 'App/base.html' %}
 
-<p>Name: {{ object.name }}</p>
-<p>Description: {{ object.description }}</p>
-<p>Created At: {{ object.created_at }}</p>
-<a href="{% url 'resource_delete' object.pk %}">Delete Resource</a>
+{% block content %}
+    
+    <h2>Resource Details</h2>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h3 class="card-title">Name: {{ object.name }}</h3>
+        <p class="card-text">Description: {{ object.description }}</p>
+        <p>Created At: {{ object.created_at }}</p>
+        <a href="{% url 'resource_delete' object.pk %}" class="btn btn-primary">Delete Resource</a>
+        </div>
+    </div>
+{% endblock %}

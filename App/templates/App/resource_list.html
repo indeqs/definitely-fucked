@@ -41,14 +41,16 @@
         <!-- Add more categories as needed --> {% endcomment %}
     {% comment %}
  </ul> {% endcomment %}
+    <div class="list-group">
      <ul>
         {% for resource in resources %}
-            <li><strong>{{ resource.name }}:</strong> {{ resource.description }}</li>
+            <a href="{% url 'resource_detail' resource.pk %}" class="list-group-item list-group-item-action"><strong>{{ resource.name }}:</strong> {{ resource.description }}</a>
              {% comment %} <a href="{% url 'resource_delete' resource.pk %}">Edit</a>
             <a href="{% url 'resource_delete' resource.pk %}">Delete</a> {% endcomment %}
     
         {% endfor %}
-    </ul> 
+     </ul> 
+    </div>
     <p>Want to share resources?<br><br><br><a href="{% url 'resource_create' %}">Click here to contribute!</a></p>
     {% endblock %}
 

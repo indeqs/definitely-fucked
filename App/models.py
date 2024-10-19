@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
+from django.utils import timezone
 
 
 # Create your models here.
@@ -8,7 +9,6 @@ from django.core.validators import RegexValidator
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(default='Bio information not provided')
-    location = models.CharField(max_length=200)
     email = models.EmailField(default='example@example.com')
     phoneNumber = models.CharField(
         max_length=17,
@@ -30,7 +30,6 @@ class Alert(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     description = models.TextField()
-    location = models.CharField(max_length=200) # @notice we don't need this
     date_created = models.DateTimeField(auto_now_add=True)
     is_approved = models.BooleanField(default=False)  
     is_active = models.BooleanField(default=True)
@@ -51,7 +50,7 @@ class Resource(models.Model):
         validators=[RegexValidator(regex=r'^\d+$', message='Only numeric values are allowed')]
     )    
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    location = models.CharField(max_length=200, default='')  # Location of donor
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
 
     def __str__(self):
@@ -82,7 +81,6 @@ class ResourceRequest(models.Model):
         validators=[RegexValidator(regex=r'^\d+$', message='Only numeric values are allowed')]
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    location = models.CharField(max_length=200, default='')  # Location of donor
     # resource = models.ForeignKey(Resource, on_delete=models.CASCADE, null=True)  # Make sure this field exists
 
 

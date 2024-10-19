@@ -28,12 +28,12 @@ class AlertAdmin(admin.ModelAdmin):
 
 
 class ResourceAdmin(admin.ModelAdmin):
-    list_display = ("name", "user", "location", "available")
+    list_display = ("name", "user", "available")
 
 
 # admin.site.register(Resource, ResourceAdmin)
 class ResourceRequestAdmin(admin.ModelAdmin):
-    list_display = ("user", "Resource_type", "description", "location", "phoneNumber")
+    list_display = ("user", "Resource_type", "description", "phoneNumber")
     # list_filter = ('is_approved',)  # Add a filter to easily see approved/unapproved requests
     # actions = ['approve_requests']  # Custom action for bulk approval
     # # Custom action to approve requests

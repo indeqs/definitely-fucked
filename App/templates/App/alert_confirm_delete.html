@@ -1,0 +1,12 @@
+<h2>Confirm Deletion</h2>
+    
+<div class="card text-center">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <p class="card-text">Are you sure you want to delete?</p>
+            <input class="btn btn-primary" type="submit" value="Confirm" style="margin-left: 35px;">
+        </form>
+    </div>
+       
+</div>

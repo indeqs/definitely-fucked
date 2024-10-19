@@ -33,9 +33,6 @@ class UserRegistrationForm(UserCreationForm):
     )
     # password = forms.CharField(widget=forms.PasswordInput)
     # confirm_password = forms.CharField(widget=forms.PasswordInput)
-    location = forms.CharField(
-        max_length=100, widget=forms.TextInput(attrs={"class": "form-control"})
-    )
 
     class Meta:
         model = User
@@ -45,7 +42,7 @@ class UserRegistrationForm(UserCreationForm):
             "phoneNumber",
             "first_name",
             "last_name",
-            "location",
+           
         ]
 
     def clean(self):
@@ -90,13 +87,13 @@ class LoginForm(AuthenticationForm):
 class ResourceForm(forms.ModelForm):
     class Meta:
         model = Resource
-        fields = ["name", "description", "available", "phoneNumber", "location"]
+        fields = ["name", "description", "available", "phoneNumber",]
 
 
 class AlertForm(forms.ModelForm):
     class Meta:
         model = Alert
-        fields = ["title", "description", "location", "is_active", "visibility"]
+        fields = ["title", "description", "is_active", "visibility"]
         widgets = {
             "description": forms.Textarea(attrs={"rows": 4, "cols": 40}),
         }
@@ -105,10 +102,9 @@ class AlertForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ["location", "email", "phoneNumber"]
+        fields = ["email", "phoneNumber"]
 
         widgets = {
-            "location": forms.TextInput(attrs={"class": "form-control"}),
             "email": forms.EmailInput(attrs={"class": "form-control"}),
             "phoneNumber": forms.TextInput(  # Use TextInput for phone number
                 attrs={
@@ -132,7 +128,7 @@ class SuperuserProfileForm(ProfileForm):
 class ResourceRequestForm(forms.ModelForm):
     class Meta:
         model = ResourceRequest
-        fields = ["Resource_type", "description", "phoneNumber", "location"]
+        fields = ["Resource_type", "description", "phoneNumber"]
 
 
 class ForumPostForm(forms.ModelForm):
@@ -187,9 +183,7 @@ class EditProfileForm(UserChangeForm):
     phone_number = forms.CharField(
         max_length=20, widget=forms.TextInput(attrs={"class": "form-control"})
     )
-    location = forms.CharField(
-        max_length=100, widget=forms.TextInput(attrs={"class": "form-control"})
-    )
+    
 
     class Meta:
         model = User
@@ -204,7 +198,7 @@ class EditProfileForm(UserChangeForm):
             "is_active",
             "date_joined",
             "phone_number",
-            "location",
+            
         )
 
 
@@ -221,7 +215,7 @@ class PasswordChangingForm(PasswordChangeForm):
     )
     new_password2 = forms.CharField(
         widget=forms.PasswordInput(
-            attrs={"class": "form-control", "placeholder": "Conform new password"}
+            attrs={"class": "form-control", "placeholder": "Confirm new password"}
         )
     )
 

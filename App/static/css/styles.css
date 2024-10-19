@@ -163,6 +163,10 @@ p {
   gap: 30px;
 }
 
+.navbar-nav a:hover {
+  color: #926b6b;
+}
+
 .dropbtn {
   margin-bottom: 18px;
 }
