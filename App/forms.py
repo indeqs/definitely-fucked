@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile, Resource, Alert, ResourceRequest, ForumPost, Comment
+from .models import Profile, Resource, Alert, ResourceRequest, ForumPost, Comment, EmergencyContact
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import (
     UserCreationForm,
@@ -127,6 +127,12 @@ class ProfileForm(forms.ModelForm):
 
 class SuperuserProfileForm(ProfileForm):
     pass
+
+
+class EmergencyContactForm(forms.ModelForm):
+    class Meta:
+        model = EmergencyContact
+        fields = ["name", "organization", "email", "phone"]
 
 
 class ResourceRequestForm(forms.ModelForm):

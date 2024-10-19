@@ -1,65 +1,84 @@
 {% extends "App/base.html" %}
 {% block content %}
 
-
-
 <style>
     .resource {
         background-color: rgb(60, 135, 115);
         padding: 20px;
         color: white;
-        border-radius: 5px;
-
-
+        border-radius: 10px;
+        margin: 40px auto;
+        max-width: 800px;
     }
 
     .resource h2 {
         color: white;
-        text-align: center;
-        letter-spacing: 2px;
+        text-align: left;
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 24px;
+        letter-spacing: 1px;
     }
 
-    .resource input {
+    .resource form {
+        display: block;
+    }
+
+    .resource label {
+        font-weight: bold;
+        margin-top: 10px;
+        display: block;
+    }
+
+    .resource input,
+    .resource select,
+    .resource textarea {
+        width: 100%;
         padding: 10px;
-        outline: none;
-        border: none;
+        margin-top: 5px;
+        margin-bottom: 20px;
         border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 16px;
+    }
+
+    .resource input:focus,
+    .resource textarea:focus {
+        border-color: rgba(255, 255, 255, 0.7);
+        outline: none;
     }
 
     .resource button {
-        display: inline-block;
-        /* Ensures the button stays inline */
-
-
+        width: 100%;
+        padding: 12px;
+        background-color: white;
+        color: rgb(60, 135, 115);
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
     }
 
-    .location h3 {
-        color: white;
-
-
+    .resource button:hover {
+        background-color: rgba(255, 255, 255, 0.8);
     }
 </style>
 
+<div class="container mt-5">
+    <div class="resource">
+        <h2>Request a Resource</h2>
+        <form method="post">
+            {% csrf_token %}
 
-<div class="resource">
+            <!-- Example: Existing form fields -->
+            {{ form.as_p }}
 
-
-    <h2>Request a Resource</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="location">
-            <h3>Provide us your location</h3>
-            <input type="text">
-
-        </div>
-        <button type="submit">Submit Request</button>
-
-    </form>
-
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
 </div>
-
-{% include './footer.html' %}
-
 
 {% endblock %}

@@ -1,25 +1,65 @@
-<!-- App/templates/App/profile_detail.html -->
-
 {% extends 'App/base.html' %}
 {% block content %}
-<h2>{{ user.username }} Profile Details</h2>
-<p>Username: {{ user.username }}</p>
-<p>First name: {{ user.first_name }}</p>
-<p>Last name: {{ user.last_name }}</p>
-<p>Email: {{ user.email }}</p>
-<p>Last login: {{ user.last_login }}</p>
-<p>Is superuser: {% if user.is_superuser %} Yes {% else %} No {% endif %}</p>
-<p>Is staff: {% if user.is_staff %} Yes {% else %} No {% endif %}</p>
-<p>Is active: {% if user.is_active %} Yes {% else %} No {% endif %}</p>
-<p>Date joined: {{ user.date_joined }}</p>
-<p>Phone Number: {{ user.profile.phoneNumber }}</p>
-<p>Location: {{ user.profile.location }}</p>
+<div class="container mt-5">
+    <h2 class="mb-4">{{ user.username }}'s Profile</h2><hr><br>
 
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Basic Information</h5>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Username:</strong> {{ user.username }}
+                </li>
+                <li class="list-group-item">
+                    <strong>First Name:</strong> {{ user.first_name }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Last Name:</strong> {{ user.last_name }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Email:</strong> {{ user.email }}
+                </li>
+                <!-- <li class="list-group-item">
+                    <strong>Is Active:</strong> {% if user.is_active %} Yes {% else %} No {% endif %}
+                </li> -->
+                <!-- <li class="list-group-item">
+                    <strong>Date Joined:</strong> {{ user.date_joined }}
+                </li> -->
+                <!-- </ul> -->
+                <!-- </div>
 
+        <div class="col-md-6"> -->
+                <!-- <h5>Profile Details</h5> -->
+                <!-- <ul class="list-group"> -->
+                <li class="list-group-item">
+                    <strong>Phone Number:</strong> {{ user.profile.phoneNumber }}
+                </li>
+                {% if user.profile.location %}
+                <li class="list-group-item">
+                    <strong>Location:</strong> {{ user.profile.location }}
+                </li>
+                {% endif %}
+                <!-- <li class="list-group-item">
+                    <strong>Last Login:</strong> {{ user.last_login }}
+                </li> -->
+                {% if user.is_superuser %}
+                <li class="list-group-item">
+                    <strong>Superuser:</strong> Yes
+                </li>
+                {% endif %}
+                {% if user.is_staff %}
+                <li class="list-group-item">
+                    <strong>Staff Member:</strong> Yes
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 
-<a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
-<a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a>
-
-{% include './footer.html' %}
+    <div class="mt-4">
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+        <a href="{% url 'password_change' %}" class="btn btn-warning">Change Password</a>
+    </div>
+</div>
 
 {% endblock %}

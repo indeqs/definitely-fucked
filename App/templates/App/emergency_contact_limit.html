@@ -1,0 +1,9 @@
+{% extends 'App/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Limit Reached</h2>
+    <p>You have reached the limit of 3 emergency contacts.</p>
+    <a href="{% url 'emergency_contacts_list' %}" class="btn btn-secondary">View Contacts</a>
+</div>
+{% endblock %}
