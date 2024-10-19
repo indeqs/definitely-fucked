@@ -1,111 +1,112 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 
 body {
-    background-color: hwb(0 71% 29%);
-    max-width: 100%;
+  background-color: hwb(0 71% 29%);
+  max-width: 100%;
 }
 
 
 
 .login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh; 
-   
-}
-
-.login h1, .register-inner h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    text-align: center;
-}
-
-.login-inner,  .register-inner{
-    border-radius: 5px;
-    padding: 20px 30px;
-    box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.2);
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 
 }
 
-.login-form  {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.login h1,
+.register-inner h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: center;
 }
 
-.login-form input , .register-form input{
-    padding: 10px;
-    outline: none;
-    border: .5px solid black;
-    border-radius: 5px;
+.login-inner,
+.register-inner {
+  border-radius: 5px;
+  padding: 20px 30px;
+  box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-form input,
+.register-form input {
+  padding: 10px;
+  outline: none;
+  border: .5px solid black;
+  border-radius: 5px;
 }
 
 .separator {
-    width: 100%;         
-    height: .5px;        
-    background-color: gray; 
-    margin: 20px 0px;
-  }
+  width: 100%;
+  height: .5px;
+  background-color: gray;
+  margin: 20px 0px;
+}
 
-  button {
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    outline: none;
-    border: none;
-    background-color: black;
-    width: 60%;
-    margin: 0 auto;           
-    margin-top: 20px;
-
-  
-    
-  }
-
-
-  p {
-    margin-top: 20px;
-    font-size: 15px;
-
-  }
+button {
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  outline: none;
+  border: none;
+  background-color: black;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 20px;
 
 
 
-  .register {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh;
-    margin: 30px;
-    
-   
+}
 
-  }
 
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+p {
+  margin-top: 20px;
+  font-size: 15px;
+
+}
+
+
+
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 30px;
+
+
+
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .register-form p {
-    gap: 5px;
+  gap: 5px;
 
 }
 
-.dropdown {
- 
-}
+.dropdown {}
 
 .dropdown-content {
   display: none;
@@ -146,10 +147,10 @@ body {
 .navbar-brand {
   font-size: 20px;
   margin-top: 20px;
- 
+
 }
 
-.header-nav{
+.header-nav {
   display: flex;
   align-items: center;
   gap: 30px;
@@ -162,11 +163,11 @@ body {
   gap: 30px;
 }
 
-.dropbtn{
+.dropbtn {
   margin-bottom: 18px;
 }
 
-.log-btn{
+.log-btn {
   margin-bottom: 20px;
   background-color: #f9f9f9;
   padding: 5px 10px;
@@ -177,7 +178,7 @@ body {
 
 
 .platform-info {
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   padding: 10px;
   border: none;
@@ -187,11 +188,13 @@ body {
   color: rgb(60, 135, 115);
 }
 
-h2 , h3 {
+h2,
+h3 {
   color: rgb(60, 135, 115);
 
 
 }
+
 strong {
   color: rgb(95, 116, 120);
 }
@@ -203,7 +206,7 @@ li {
 .email {
   color: rgb(60, 135, 115);
   cursor: pointer;
-  
+
 }
 
 .resource-list {
@@ -212,7 +215,7 @@ li {
   border-radius: 5px;
 
 }
- 
+
 
 .resource-list h2 {
 
@@ -237,15 +240,15 @@ li {
 }
 
 
-.alerts li a{
+.alerts li a {
   background: rgb(48, 88, 183);
   padding: 8px;
   border-radius: 5px;
   color: #fff;
   text-decoration: none;
-  
 
-  
+
+
 }
 
 .contact {
@@ -257,13 +260,3 @@ li {
 .contact h1 {
   text-align: center;
 }
-
-
-
-
-
-
-
-
-
-

@@ -13,6 +13,10 @@ from django.core.validators import RegexValidator
 
 
 class UserRegistrationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["username"].help_text = None
+
     email = forms.EmailField(required=True, label="Email")
     phoneNumber = forms.CharField(
         max_length=17,
