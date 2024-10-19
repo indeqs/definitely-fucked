@@ -1,0 +1,30 @@
+{% extends 'App/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Your Emergency Contacts</h2>
+
+    <div class="list-group">
+        {% for contact in contacts %}
+        <div class="list-group-item">
+            <h5 class="mb-1">{{ contact.name }} - <small class="text-muted">{{ contact.organization }}</small></h5>
+            <p class="mb-1">
+                Email: <a href="mailto:{{ contact.email }}" class="text-decoration-none">{{ contact.email }}</a>
+            </p>
+            <p class="mb-1">
+                Phone: <a href="tel:{{ contact.phone }}" class="text-decoration-none">{{ contact.phone }}</a>
+            </p>
+        </div>
+        {% empty %}
+        <div class="list-group-item">
+            <p>No contacts added yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if contacts|length < 3 %} <div class="mt-4">
+        <a href="{% url 'add_emergency_contact' %}" class="btn btn-primary">Add Emergency Contact</a>
+</div>
+{% endif %}
+</div>
+{% endblock %}

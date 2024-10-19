@@ -1,0 +1,11 @@
+<!-- App/templates/App/add_emergency_contact.html -->
+{% extends 'App/base.html' %}
+
+{% block content %}
+<h1>Add Emergency Contact</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Contact</button>
+</form>
+{% endblock %}

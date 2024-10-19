@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views
 from .views import ussd_callback
+from .views import add_emergency_contact, success_view 
 
 from django.contrib.auth import views as auth_views
 from .views import UseRegisterView
@@ -87,5 +88,16 @@ urlpatterns = [
         name="change-password",
     ),
     path("password_success/", views.password_success, name="password_success"),
+    path(
+        "emergency-contacts/",
+        EmergencyContactListView.as_view(),
+        name="emergency_contact_list",
+    ),
+    path(
+        "add-emergency-contact/",
+        views.add_emergency_contact,
+        name="add_emergency_contact",
+    ),
+    path("success/", success_view, name="success_url"),
     path("ussd_callback/", ussd_callback, name="ussd_callback"),
 ]
