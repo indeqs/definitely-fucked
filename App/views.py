@@ -183,35 +183,35 @@ class AlertListView(ListView):
     template_name = "App/alert_list.html"
     context_object_name = "alerts"
 
-    def get_queryset(self):
-        return Alert.objects.filter(user=self.request.user)
-
-    def post(self, request, *args, **kwargs):
-        profile = self.get_object()
-        form = ProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(
-                reverse("profile-detail", kwargs={"pk": profile.pk})
-            )
-        else:
+    #def get_queryset(self):
+        #return Alert.objects.filter(user=self.request.user)
+    
+    #def post(self, request, *args, **kwargs):
+       # profile = self.get_object()
+        #form = ProfileForm(request.POST, instance=profile)
+       # if form.is_valid():
+            #form.save()
+            #return HttpResponseRedirect(reverse('profile-detail', kwargs={'pk': profile.pk}))
+        #else:
             # Handle form errors or render the form with errors
-            context = self.get_context_data(object=profile, form=form)
-            return self.render_to_response(context)
+            #context = self.get_context_data(object=profile, form=form)
+            #return self.render_to_response(context)
 
 
 class AlertCreateView(CreateView):
     model = Alert
     form_class = AlertForm
-    template_name = "App/alert_form.html"
-    success_url = reverse_lazy(
-        "latest_alerts"
-    )  # @notice Fix this as latest alerts aren't shown
+    template_name = 'App/alert_form.html'
+    success_url = reverse_lazy('alert_list') # @notice Fix this as latest alerts aren't shown
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-
+    
+class AlertDeleteView(LoginRequiredMixin, DeleteView):
+    model = Alert
+    template_name = 'App/alert_confirm_delete.html'
+    success_url = reverse_lazy('alert_list')
 
 class AlertUpdateView(UpdateView):
     model = Alert
@@ -220,19 +220,8 @@ class AlertUpdateView(UpdateView):
     success_url = reverse_lazy("alert_list")
 
     def get_queryset(self):
-        return Alert.objects.filter(user=self.request.user)
-
-
-class LatestAlertsView(ListView):
-    model = Alert
-    template_name = "App/latest_alerts.html"
-    context_object_name = "alerts"
-
-    def get_queryset(self):
-        alerts = Alert.objects.filter(is_approved=True).order_by("-date_created")[:10]
-        logger.debug(f"Latest alerts retrieved: {alerts}")  # Log the alerts
-        return alerts
-
+        return Alert.objects.filter(user=self.request.user)  
+   
 
 class AlertDetailView(DetailView):
     model = Alert

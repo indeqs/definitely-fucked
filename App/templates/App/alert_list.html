@@ -1,18 +1,18 @@
 {% extends 'App/base.html' %}
 {% block content %}
-<!-- <h2>Create A New Alert</h2>
-  <a href="{% url 'alert_create' %}">Create Alert</a> -->
-<ul>
-  {% for alert in alerts %}
-  <li>
-    <a href="{% url 'alert_update' alert.pk %}">{{ alert.title }}</a>
-    | <a href="{% url 'alert_delete' alert.pk %}">Delete</a>
-    <p>{{ alert.description }}</p>
-    <p>{{ alert.location }}</p>
-    <p>{{ alert.date_created }}</p>
-    <p>{{ alert.is_active }}</p>
-    <p>{{ alert.visibility }}</p>
-  </li>
-  {% endfor %}
-</ul>
+<a href="{% url 'alert_create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-bottom: 15px;">Create Alert</a>
+
+{% for alert in alerts %}
+  <div class="card" style="width: 18rem; margin-bottom: 15px;">
+    <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'alert_update' alert.pk %}">{{ alert.title }}</a></h5>
+        <p>{{ alert.description }}</p>
+          <p class="card-text">{{ alert.date_created }}</p>
+          <p class="card-text">{{ alert.is_active }}</p>
+          <p class="card-text">{{ alert.visibility }}</p>
+        <a href="{% url 'alert_delete' alert.pk %}" class="btn btn-primary">Delete</a>
+    </div>
+  </div>
+{% endfor %}
+
 {% endblock %}

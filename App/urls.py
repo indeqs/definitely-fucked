@@ -19,7 +19,6 @@ from .views import (
     AlertCreateView,
     AlertUpdateView,
     AlertDetailView,
-    LatestAlertsView,
     ResourceRequestCreateView,
     ResourceRequestListView,
     ForumPostListView,
@@ -29,6 +28,7 @@ from .views import (
     UserEditView,
     ApprovedAlertListView,
     PasswordChangeView,
+    AlertDeleteView,
 )
 
 # ,UserRegisterView
@@ -58,9 +58,10 @@ urlpatterns = [
         "alerts/new/", AlertCreateView.as_view(), name="alert_create"
     ),  # Use alert_create
     path("alert/edit/<int:pk>/", AlertUpdateView.as_view(), name="alert_update"),
-    path("latest-alerts/", LatestAlertsView.as_view(), name="latest_alerts"),
+    
     path("alerts/<int:pk>/", AlertDetailView.as_view(), name="alert_detail"),
     path("approved-alerts/", ApprovedAlertListView.as_view(), name="approved_alerts"),
+    path("alert/delete/<int:pk>/", AlertDeleteView.as_view(), name="alert_delete"),
     path(
         "request-resource/",
         ResourceRequestCreateView.as_view(),
